@@ -1,0 +1,91 @@
+*, *::before, *::after { /*This selects ALL elements before and after */
+    box-sizing: border-box;  /*This makes width and height easier to style*/
+    font-family: 'Oswald', sans-serif;
+}
+
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
+body {
+    --hue: var(--hue-neutral); /*Set up variable and set it up to our default neutral color if we dont have an answer selected*/
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw; /* This means it will take up 100% of the width*/
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 20%); /*hsl=hue, saturation, lightness*/
+}
+/* These classes will change our background depending on whether the answer is correct or not*/
+body.correct {
+    --hue: var(--hue-correct)
+}
+
+body.wrong {
+    --hue: var(--hue-wrong)
+}
+
+/*This give the card effect*/
+.container {
+    width: 800px;
+    max-width: 80%; /*This way our content doesnt overflow the page*/
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px; /*The values: x-offset, y-offset, blur, spread(how far out from container it goes*/
+}
+/*This edits our answer buttons - its the class that was asigned to it*/
+
+.btn-grid {
+    display: grid; /*This places answer options on top of eachother in rows*/
+    grid-template-columns: repeat(2, auto); /*This creates two rows that repeat, and take up as much width as needed*/
+    gap: 10px;
+    margin: 20px, 0;
+    padding-top: 10px;
+}
+
+/* Generic button class that will add style to all buttons on the page*/
+.btn {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    border-radius: 5px;
+    background-color: hsl(var(--hue), 100%, 50%);
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+    border-width: 1.5px;
+}
+
+.btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.hide {
+    display: none;
+}
